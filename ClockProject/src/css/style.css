@@ -1,0 +1,23 @@
+body {
+    background-color: #000;
+    color: red;
+}
+
+#clock {
+    border: 1px solid #fff;
+}
+
+
+#calendar {
+    border: 1px solid #fff;
+}
+
+.currentDate{
+    color: lightskyblue;
+    display: inline;
+}
+
+.currentTime{
+    color: lightseagreen;
+    display: inline;
+}

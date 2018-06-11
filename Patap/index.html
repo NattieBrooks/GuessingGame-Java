@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" type = "text/css" href="assets/css/main.css">
+        <script type="text/javascript" src="assets/js/lib/paperJs/dist/paper-full.js"></script>
+        <script type="text/javascript" src="assets/js/lib/howlerJS/howler.js-master/dist/howler.min.js"></script>
+        
+        <script type="text/paperscript" canvas="myCanvas">
+
+        var keyData = {
+            a: {
+                color: "red",
+                sound: new Howl({
+                src: ['assets/sounds/sounds/bubbles.mp3']
+                })
+                },
+            b: {
+                color: "orange",
+                sound :new Howl({
+                src: ['assets/sounds/sounds/clay.mp3']
+                })
+                },
+             c: {
+                color: "yellow",
+                sound :new Howl({
+                src: ['assets/sounds/sounds/confetti.mp3']
+                })
+                },
+            d: {
+                color: "green",
+                sound :new Howl({
+                src: ['assets/sounds/sounds/corona.mp3']
+                })
+                },
+             e: {
+                color: "blue",
+                sound :new Howl({
+                src: ['assets/sounds/sounds/glimmer.mp3']
+                })
+                },
+            f: {
+                color: "indigo",
+                sound :new Howl({
+                src: ['assets/sounds/sounds/splits.mp3']
+                })
+                },
+             g: {
+                color: "violet",
+                sound :new Howl({
+                src: ['assets/sounds/sounds/strike.mp3']
+                })
+                }
+
+            }
+        
+    
+         var circles = [];
+
+        function onKeyDown(event) {
+            if(keyData[event.key]) {
+            
+            var maxPoint = new Point(view.size.width, view.size.height);
+            var randomPoint = Point.random();
+            var point = maxPoint * randomPoint;
+            var newCircle = new Path.Circle(point, 500) 
+            newCircle.fillColor = keyData[event.key].color;
+            keyData[event.key].sound.play();
+            circles.push(newCircle);
+            }
+        }    
+
+        function onFrame(event){
+            for (var i = 0; i < circles.length; i++){
+                circles[i].fillColor.hue += 1;
+                circles[i].scale(.9);
+            }
+        }
+        
+         
+        </script>
+
+      
+    </head>
+    <body>
+        <canvas id="myCanvas" resize></canvas>
+    </body>
+</html>
